@@ -5,7 +5,7 @@ An experimental filesystem router plugin for [Elysia](https://github.com/elysiaj
 ## Installation
 
 ```bash
-bun install elysia-filesystemrouter
+bun install @hambergerpls/elysia-filesystemrouter
 ```
 
 ## Usage

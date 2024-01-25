@@ -2,4 +2,4 @@
 "elysia-filesystemrouter": minor
 ---
 
-feat(\*): file based routing
+feat(\*): initial file based routing implementation

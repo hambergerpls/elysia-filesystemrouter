@@ -15,5 +15,9 @@
   },
   "dependencies": {
     "elysia": "^0.8.10"
+  },
+  "scripts": {
+    "version": "changeset version",
+    "release": "changeset tag"
   }
 }

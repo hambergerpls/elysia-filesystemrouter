@@ -39,10 +39,12 @@ import { fileSystemRouter } from "elysia-filesystemrouter";
 // We export app so that we can use it in our handlers for autocompletions and type checking
 export const app = new Elysia()
                 .decorate('hi', () => 'hi') // Add decorators, top-level hooks, etc.
-                .use(await fileSystemRouter({
-                    dir: "./src/router"
-                }))
-                .listen(3000)
+
+// Must be separated to initialize app first
+app.use(await fileSystemRouter({
+    dir: "./src/router"
+    }))
+    .listen(3000)
 ```
 
 

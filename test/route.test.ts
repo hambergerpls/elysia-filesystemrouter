@@ -149,36 +149,34 @@ describe('route', () => {
     })
 
     it('validate', async () => {
-    	const app = new Elysia()
-        .use(await fileSystemRouter({
-            dir: dir,
-        }))
+        const app = new Elysia()
+            .use(await fileSystemRouter({
+                dir: dir,
+            }))
 
-    	const res = await app
-    		.handle(
-    			post('/validate?id=me', {
-    				username: 'username',
-    				password: 'password'
-    			})
-    		)
-    		.then((x) => x.text())
-    	expect(res).toBe('me')
+        const res = await app
+            .handle(
+                post('/validate?id=me', {
+                    username: 'username',
+                    password: 'password'
+                })
+            )
+            .then((x) => x.text())
+        expect(res).toBe('me')
     })
 
-    // it('handle non query fallback', async () => {
-    // 	const app = new Elysia({ aot: false })
-    // 		.get('/', () => 'hi', {
-    // 			query: t.Object({
-    // 				redirect_uri: t.Optional(t.String())
-    // 			})
-    // 		})
+    it('handle non query fallback', async () => {
+        const app = new Elysia()
+            .use(await fileSystemRouter({
+                dir: dir,
+            }))
 
-    // 	const res1 = await app.handle(req('/'))
-    // 	const res2 = await app.handle(req('/?'))
-    // 	const res3 = await app.handle(req('/?redirect_uri=a'))
+        const res1 = await app.handle(req('/fallback'))
+        const res2 = await app.handle(req('/fallback?'))
+        const res3 = await app.handle(req('/fallback?redirect_uri=a'))
 
-    // 	expect(res1.status).toBe(200)
-    // 	expect(res2.status).toBe(200)
-    // 	expect(res3.status).toBe(200)
-    // })
+        expect(res1.status).toBe(200)
+        expect(res2.status).toBe(200)
+        expect(res3.status).toBe(200)
+    })
 })

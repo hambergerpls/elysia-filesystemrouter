@@ -28,7 +28,7 @@ export const fileSystemRouter = async (options: {
     for (let [route, importPath] of Object.entries(getRoutes(options.dir))) {
         if (options.debug) console.log(`Processing route: ${route}`)
         route = parseBracketedDynamicRoute(route)
-        Bun.write(`${importPath.slice(0, importPath.length - 3)}.g.ts`, handlerTemplate(route))
+        await Bun.write(`${importPath.slice(0, importPath.length - 3)}.g.ts`, handlerTemplate(route))
         const entrypoint: Entrypoint = await import(importPath)
         if (entrypoint.onRequest) {
             if (options.debug) console.log(`all: ${route}`)
@@ -76,7 +76,7 @@ const getRoutes = (dir: string) => {
     const routes: { [key: string]: string } = {}
     const regex = /(?<!.g).ts$/
     dir = dir.endsWith('/') ? dir : dir + '/'
-    dir = path.join(import.meta.dir, dir)
+    dir = path.join(process.cwd(), dir)
     readdirSync(dir, { recursive: true })
         .filter(f => regex.test(f.toString()))
         .map(f => {

@@ -1,5 +1,11 @@
 # elysia-filesystemrouter
 
+## 0.1.2
+
+### Patch Changes
+
+- d5a603d: ci(config.json): change access to public
+
 ## 0.1.1
 
 ### Patch Changes

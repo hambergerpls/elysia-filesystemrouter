@@ -1,5 +1,11 @@
 # elysia-filesystemrouter
 
+## 0.1.2
+
+### Patch Changes
+
+- d0f598b: ci(package.json): add --access=public to release script
+
 ## 0.1.1
 
 ### Patch Changes

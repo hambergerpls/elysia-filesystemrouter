@@ -1,5 +1,11 @@
 # elysia-filesystemrouter
 
+## 0.1.3
+
+### Patch Changes
+
+- f075814: fix(index.ts): await Bun.write
+
 ## 0.1.2
 
 ### Patch Changes
